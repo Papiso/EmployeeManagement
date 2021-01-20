@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name="employee_tbl")
+@Entity()
+@Table(name="employee_tbl")
 public class EmployeeEntity {
 	
 	@Id

@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,6 +48,23 @@ public class Employee implements Serializable {
 		return employeeEntity;
 	}
 	
+	public Employee getEmployee(EmployeeEntity employeeEntity) {
+		Employee employee = new Employee();
+		employee.setName(employeeEntity.getName());
+		employee.setSurName(employeeEntity.getSurName());
+		employee.setDateOfBirth(employeeEntity.getDateOfBirth());
+		return employee;
+	}
+	
+	public List<Employee> getEmployees(List<EmployeeEntity> employeeEntityList){
+		List<Employee> employeeList = new ArrayList<>();
+		for(EmployeeEntity empEntity : employeeEntityList) {
+			Employee employee = new Employee();
+			employee = getEmployee(empEntity);
+			employeeList.add(employee);
+		}
+		return employeeList;
+	}
 	
 	
 

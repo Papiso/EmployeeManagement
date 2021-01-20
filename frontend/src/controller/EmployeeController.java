@@ -10,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
+import entities.EmployeeEntity;
 import model.Employee;
 import service.EmployeeEJB;
 
@@ -27,7 +28,7 @@ public class EmployeeController{
     private List<Employee> employeeList = new ArrayList<>();
  
    public List<Employee> getEmployeeList() {
-       // employeeList = employeeEJB.findEmployees();
+       employeeList = employee.getEmployees(employeeEJB.findEmployees());
         return employeeList;
     }
  

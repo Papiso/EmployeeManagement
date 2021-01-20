@@ -1,9 +1,12 @@
 package service;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import entities.EmployeeEntity;
 
@@ -28,6 +31,15 @@ public class EmployeeEJB {
     	System.out.println(employeeEntity.getName());
     	em.persist(employeeEntity);
     	System.out.println("============================");
+    }
+    
+    public EmployeeEntity findEmployee(int id) {
+    	return em.find(EmployeeEntity.class, id);
+    }
+    
+    public List<EmployeeEntity> findEmployees(){
+    	TypedQuery<EmployeeEntity> query = em.createQuery("SELECT e FROM EmployeeEntity e", EmployeeEntity.class);
+    	return query.getResultList();
     }
 
 }
